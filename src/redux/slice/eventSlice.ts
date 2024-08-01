@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface EventState {
-  repeat: object;
-  wait: object;
+  repeat: any;
+  wait: any;
 }
 
 const initialState: EventState = {
@@ -15,16 +15,10 @@ export const eventSlice = createSlice({
   initialState,
   reducers: {
     setRepeat: (state, action) => {
-      return {
-        ...state,
-        repeat: action.payload.value,
-      };
+      state.repeat = action.payload.value;
     },
     setWait: (state, action) => {
-      return {
-        ...state,
-        wait: action.payload.value,
-      };
+      state.wait = action.payload.value;
     },
   },
 });

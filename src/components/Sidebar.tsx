@@ -1,32 +1,120 @@
 import React from "react";
-import Icon from "./Icon";
+import { Draggable, Droppable } from "react-beautiful-dnd";
+import { getComponent } from "./getComponents";
+import {
+  motionComponents,
+  looksComponents,
+  controlComponents,
+  eventsComponents,
+} from "./SidebarConstants";
+import { Box, Typography } from "@mui/material";
+import { RootState, useAppSelector } from "../redux/store";
+import styled from "@emotion/styled";
 
-export default function Sidebar() {
+const SidebarContainer = styled(Box)`
+  width: 15rem;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0.5rem;
+  border-right: 1px solid #e5e7eb;
+`;
+
+const SidebarHeader = styled(Box)`
+  font-weight: bold;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  border: 2px solid;
+  border-radius: 0.25rem;
+  color: white;
+  background-color: #38a169;
+  padding: 0.5rem;
+  width: auto;
+`;
+
+const SectionTitle = styled(Typography)`
+  font-weight: bold;
+`;
+
+const ComponentList = styled.ul`
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+`;
+
+const ComponentItem = styled.li`
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+`;
+
+const Sidebar: React.FC = () => {
+  const app = useAppSelector((state:RootState) => state.app);
   return (
-    <div className="w-60 flex-none h-full overflow-y-auto flex flex-col items-start p-2 border-r border-gray-200">
-      <div className="font-bold"> {"Events"} </div>
-      <div className="flex flex-row flex-wrap bg-yellow-500 text-white px-2 py-1 my-2 text-sm cursor-pointer">
-        {"When "}
-        <Icon name="flag" size={15} className="text-green-600 mx-2" />
-        {"clicked"}
-      </div>
-      <div className="flex flex-row flex-wrap bg-yellow-500 text-white px-2 py-1 my-2 text-sm cursor-pointer">
-        {"When this sprite clicked"}
-      </div>
-      <div className="font-bold"> {"Motion"} </div>
-      <div className="flex flex-row flex-wrap bg-blue-500 text-white px-2 py-1 my-2 text-sm cursor-pointer">
-        {"Move 10 steps"}
-      </div>
-      <div className="flex flex-row flex-wrap bg-blue-500 text-white px-2 py-1 my-2 text-sm cursor-pointer">
-        {"Turn "}
-        <Icon name="undo" size={15} className="text-white mx-2" />
-        {"15 degrees"}
-      </div>
-      <div className="flex flex-row flex-wrap bg-blue-500 text-white px-2 py-1 my-2 text-sm cursor-pointer">
-        {"Turn "}
-        <Icon name="redo" size={15} className="text-white mx-2" />
-        {"15 degrees"}
-      </div>
-    </div>
+    <SidebarContainer>
+      <SidebarHeader>Side Bar</SidebarHeader>
+
+      {/* Motion */}
+      <SectionTitle>Motion</SectionTitle>
+      <Droppable droppableId="sideArea-motion" type="COMPONENTS">
+        {(provided) => (
+          <ComponentList
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            {motionComponents.map((x, i) => (
+              <Draggable
+                key={`${x}-sideArea`}
+                draggableId={`${x}-sideArea`}
+                index={i}
+              >
+                {(provided) => (
+                  <ComponentItem
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    {getComponent(x, String(app.appId))}
+                  </ComponentItem>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </ComponentList>
+        )}
+      </Droppable>
+
+      {/* Looks */}
+      <SectionTitle>Looks</SectionTitle>
+      <Droppable droppableId="sideArea-looks" type="COMPONENTS">
+        {(provided) => (
+          <ComponentList
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            {looksComponents.map((x, i) => (
+              <Draggable
+                key={`${x}-sideArea`}
+                draggableId={`${x}-sideArea`}
+                index={i}
+              >
+                {(provided) => (
+                  <ComponentItem
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    {getComponent(x, String(app.appId))}
+                  </ComponentItem>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </ComponentList>
+        )}
+      </Droppable>
+    </SidebarContainer>
   );
-}
+};
+
+export default Sidebar;

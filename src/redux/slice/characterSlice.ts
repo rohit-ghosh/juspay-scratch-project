@@ -15,22 +15,16 @@ export const characterSlice = createSlice({
   initialState,
   reducers: {
     setCharacterAngle: (state, action) => {
-      return {
-        ...state,
-        active: action.payload.id,
-      };
+      state.active = action.payload.id;
     },
-    setActive: (state) => {
+    setActive: (state, action) => {
       let charactersArray = state.characters;
       charactersArray.push({
         id: `sprite${state.characters.length}`,
         angle: 0,
       });
 
-      return {
-        ...state,
-        characters: charactersArray,
-      };
+      state.characters = charactersArray;
     },
     addCharacter: (state, action) => {
       let characters_Array = state.characters;
@@ -44,10 +38,7 @@ export const characterSlice = createSlice({
         curr_character.angle = action.payload.angle;
         characters_Array[curr_character_index] = curr_character;
       }
-      return {
-        ...state,
-        characters: characters_Array,
-      };
+      state.characters = characters_Array;
     },
   },
 });

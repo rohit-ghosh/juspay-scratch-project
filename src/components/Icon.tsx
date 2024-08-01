@@ -1,17 +1,29 @@
+// Import necessary modules and libraries
+import React from "react";
+import SvgIcon from '@mui/material/SvgIcon';
+import styled from "@emotion/styled";
+
+// Define the props interface
 interface IconProps {
   name: string;
-  size: number;
-  className: string;
+  size?: number;
+  className?: string;
 }
 
-export default function Icon({ name, size = 20, className = "" }: IconProps) {
+// Styled component for the SVG
+const StyledSvg = styled(SvgIcon)<{ size: number }>`
+  fill: currentColor;
+  width: ${(props) => props.size}px;
+  height: ${(props) => props.size}px;
+`;
+
+// Functional component with TypeScript
+const Icon: React.FC<IconProps> = ({ name, size = 20, className = "" }) => {
   return (
-    <svg
-      className={`fill-current ${className}`}
-      width={size.toString() + "px"}
-      height={size.toString() + "px"}
-    >
+    <StyledSvg className={className} size={size}>
       <use xlinkHref={`/icons/solid.svg#${name}`} />
-    </svg>
+    </StyledSvg>
   );
-}
+};
+
+export default Icon;
