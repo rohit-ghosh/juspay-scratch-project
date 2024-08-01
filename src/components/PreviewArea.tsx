@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { RootState, useAppDispatch, useAppSelector } from '../redux/store'; // Adjust the import according to your store setup
 import CatSprite from './CatSprite';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
@@ -9,7 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { addCharacter, setActive } from '../redux/slice/characterSlice';
+import { setActive } from '../redux/slice/characterSlice';
 
 // Styling for MaterialUI Components
 const useStyles = makeStyles((theme) =>
@@ -69,47 +68,8 @@ const PreviewArea: React.FC = () => {
 
   return (
     <div className="w-full flex-none h-full overflow-y-auto p-3" id="preview_area">
-      <div className="flex justify-between mb-10">
-        <div className="font-bold mb-5 text-center border border-2 rounded text-white bg-green-400 p-2 w-auto">
-          Preview Area
-        </div>
-        <div>
-          <FormControl className={classes.formControl}>
-            <InputLabel shrink id="demo-simple-select-placeholder-label-label">
-              Active
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-placeholder-label-label"
-              id="demo-simple-select-placeholder-label"
-              value={active}
-              onChange={handleChange}
-              displayEmpty
-              className={classes.selectEmpty}
-            >
-              {character.characters.map((x, i) => {
-                const first = x.id.charAt(0).toUpperCase();
-                const name = first + x.id.substr(1);
-                return (
-                  <MenuItem key={i} value={x.id}>
-                    {name}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-          </FormControl>
-        </div>
-        <div>
-          <Button
-            variant="contained"
-            color="secondary"
-            className={classes.button}
-            startIcon={<AddCircleIcon />}
-            // todo fix this
-            onClick={() => dispatch(addCharacter(0))}
-          >
-            Create
-          </Button>
-        </div>
+      <div className="font-bold mb-5 text-center border border-2 rounded text-white bg-green-400 p-2 w-auto">
+        Preview Area
       </div>
       <div className="flex justify-around h-full">
         {character.characters.map((x, i) => (

@@ -26,24 +26,10 @@ export const characterSlice = createSlice({
 
       state.characters = charactersArray;
     },
-    addCharacter: (state, action) => {
-      let characters_Array = state.characters;
-      let curr_character = characters_Array.find(
-        (character) => character.id === state.active
-      );
-      const curr_character_index = characters_Array.findIndex(
-        (character) => character.id === state.active
-      );
-      if (curr_character && curr_character_index > -1) {
-        curr_character.angle = action.payload.angle;
-        characters_Array[curr_character_index] = curr_character;
-      }
-      state.characters = characters_Array;
-    },
   },
 });
 
-export const { setCharacterAngle, setActive, addCharacter } =
+export const { setCharacterAngle, setActive } =
   characterSlice.actions;
 
 export default characterSlice.reducer;
