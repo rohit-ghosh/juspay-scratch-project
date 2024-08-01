@@ -4,8 +4,6 @@ import { getComponent } from "./getComponents";
 import {
   motionComponents,
   looksComponents,
-  controlComponents,
-  eventsComponents,
 } from "./SidebarConstants";
 import { Box, Typography } from "@mui/material";
 import { RootState, useAppSelector } from "../redux/store";

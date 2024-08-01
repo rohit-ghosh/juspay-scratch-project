@@ -17,7 +17,3 @@ export const motionComponents: string[] = [
     "SHOW",
     "HIDE",
   ];
-  
-  export const eventsComponents: string[] = ["BROADCAST"];
-  
-  export const controlComponents: string[] = ["WAIT", "REPEAT"];
