@@ -1,10 +1,21 @@
-import { RepoLink, RootContainer, Title } from "./Style";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { AppBar, Button, Toolbar } from "@mui/material";
+import { Title } from "./Style";
 
-export function Header () {
+export function Header() {
   return (
-    <RootContainer className="h-10 p-5 items-center">
-        <Title>Juspay Scratch Project</Title>
-        <RepoLink href="https://github.com/rohit-ghosh/juspay-scratch-project">Repository link</RepoLink>
-    </RootContainer>
+    <AppBar position="static">
+      <Toolbar>
+        <Title variant="h6">Juspay Scratch Project</Title>
+        <Button
+          href="https://github.com/rohit-ghosh/juspay-scratch-project"
+          target="_blank"
+          color="inherit"
+          startIcon={<GitHubIcon />}
+        >
+          GitHub
+        </Button>
+      </Toolbar>
+    </AppBar>
   );
 }

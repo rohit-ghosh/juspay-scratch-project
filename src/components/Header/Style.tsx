@@ -1,10 +1,5 @@
-import { Box, Link, styled } from "@mui/material";
-import { HFlex } from "../Common/Containers";
+import { styled, Typography } from "@mui/material";
 
-export const RootContainer = styled(HFlex)`
-justify-content: space-between;
+export const Title = styled(Typography)`
+  flex-grow: 1;
 `;
-
-export const Title = styled(Box)``;
-
-export const RepoLink = styled(Link)``;
