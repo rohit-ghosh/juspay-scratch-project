@@ -17,7 +17,7 @@ const StyledPaper = styled(Paper)`
     border-radius: 0.25rem;
   }
   .bg-blue-500 {
-    background-color: #3b82f6;
+    background-color: #1e3a8a;
   }
   .p-2 {
     padding: 0.5rem;

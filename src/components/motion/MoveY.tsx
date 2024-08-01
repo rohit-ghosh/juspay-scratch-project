@@ -10,7 +10,7 @@ interface MoveYProps {
 const StyledDiv = styled.div`
   text-align: center;
   border-radius: 0.375rem;
-  background-color: #1e40af; /* bg-blue-700 */
+  background-color: #1e3a8a;
   color: white;
   padding: 0.5rem;
   margin: 0.5rem 0;

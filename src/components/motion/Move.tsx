@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import Paper from "@material-ui/core/Paper";
 import styled from "@emotion/styled";
 
@@ -45,7 +44,7 @@ const Move: React.FC<MoveProps> = ({ character, comp_id }) => {
 const StyledDiv = styled.div`
   text-align: center;
   border-radius: 0.25rem;
-  background-color: #1e3a8a; /* bg-blue-700 */
+  background-color: #1e3a8a;
   color: white;
   padding: 0.5rem;
   margin: 0.5rem 0;
