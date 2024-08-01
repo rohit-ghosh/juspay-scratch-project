@@ -25,7 +25,7 @@ const SayMessage: React.FC<SayMessageProps> = ({ comp_id }) => {
       if (el) el.style.display = "none";
       return;
     }
-    setState({ ...state, show_msg: true });
+    setState({ ...state, show_msg: true, character_id: character.active });
     if (el) {
       el.style.display = "block";
       el.style.position = "relative";
@@ -45,8 +45,7 @@ const SayMessage: React.FC<SayMessageProps> = ({ comp_id }) => {
             type="text"
             value={state.message}
             onChange={(e) => {
-              e.target.value.length > 0 &&
-                setState({ ...state, message: e.target.value });
+              setState({ ...state, message: e.target.value });
             }}
           />
         </StyledGrid>
@@ -72,7 +71,9 @@ const StyledContainer = styled.div`
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 8px;
   margin: 16px 0;
 `;
 
@@ -81,9 +82,9 @@ const StyledLabel = styled.div`
 `;
 
 const StyledInput = styled.input`
-  margin: 0 8px;
-  padding: 4px 8px;
-  text-align: center;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
 `;
 
 const StyledButton = styled.div`
