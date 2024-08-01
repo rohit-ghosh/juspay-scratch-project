@@ -33,7 +33,7 @@ const ThinkMessage: React.FC<ThinkMessageProps> = ({ character, comp_id }) => {
       if (el2) el2.style.display = "none";
       return;
     }
-    setState({ ...state, show_msg: true });
+    setState({ ...state, show_msg: true, character_id: character.active });
     if (el) {
       el.style.display = "block";
       el.style.position = "relative";
@@ -85,7 +85,9 @@ const StyledContainer = styled.div`
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr; /* Adjusted to give input more space */
+  align-items: center;
+  gap: 8px;
   margin: 16px 0;
 `;
 
@@ -94,9 +96,10 @@ const StyledLabel = styled.div`
 `;
 
 const StyledInput = styled.input`
-  margin: 0 8px;
+  width: 100%; /* Ensure input takes full width of its grid cell */
   padding: 4px;
   text-align: center;
+  box-sizing: border-box;
 `;
 
 const StyledMessageBox = styled.div`

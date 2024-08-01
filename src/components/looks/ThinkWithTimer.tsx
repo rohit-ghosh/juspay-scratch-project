@@ -1,7 +1,5 @@
-// src/components/looks/ThinkWithTimer.tsx
-
 import React, { useState } from "react";
-import Paper from "@material-ui/core/Paper";
+import Paper from "@mui/material/Paper";
 import styled from "@emotion/styled";
 
 interface ThinkWithTimerProps {
@@ -19,37 +17,41 @@ interface State {
 }
 
 const Container = styled(Paper)`
-  elevation: 3;
-  .rounded {
-    text-align: center;
-    background-color: #6b46c1;
-    padding: 0.5rem;
-    margin: 0.75rem 0;
-  }
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #6b46c1;
+
   .grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin: 0.5rem 0;
+    grid-template-columns: 1fr 2fr;
+    gap: 8px;
+    margin: 8px 0;
   }
+
   .text-white {
     color: white;
   }
+
   .input {
-    margin: 0 0.5rem;
-    padding: 0.25rem;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
     text-align: center;
   }
+
   .message-box {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
     background-color: #4a148c;
     color: white;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    font-size: 0.875rem;
+    padding: 8px;
+    margin: 16px 0;
+    font-size: 14px;
     cursor: pointer;
+    border-radius: 4px;
   }
 `;
 
@@ -58,6 +60,7 @@ const ThinkWithTimer: React.FC<ThinkWithTimerProps> = ({ character, comp_id }) =
     show_msg: false,
     timer_message: "",
     timer_for_msg: 0,
+    character_id: "",
   });
 
   const displayMessage = () => {
@@ -69,7 +72,7 @@ const ThinkWithTimer: React.FC<ThinkWithTimerProps> = ({ character, comp_id }) =
       if (el2) el2.style.display = "none";
       return;
     }
-    setState({ ...state, show_msg: true });
+    setState({ ...state, show_msg: true, character_id: character.active });
     if (el) {
       el.style.display = "inline-block";
       el.style.position = "relative";
@@ -88,39 +91,37 @@ const ThinkWithTimer: React.FC<ThinkWithTimerProps> = ({ character, comp_id }) =
   };
 
   return (
-    <Container>
-      <div className="rounded">
-        <div className="grid">
-          <div className="text-white">Message</div>
-          <input
-            className="input"
-            type="text"
-            value={state.timer_message}
-            onChange={(e) => {
-              e.target.value.length > 0 &&
-                setState({ ...state, timer_message: e.target.value });
-            }}
-          />
-        </div>
-        <div className="grid">
-          <div className="text-white">Timer:</div>
-          <input
-            className="input"
-            type="number"
-            value={state.timer_for_msg}
-            onChange={(e) => {
-              parseInt(e.target.value) > 0 &&
-                setState({ ...state, timer_for_msg: parseInt(e.target.value) });
-            }}
-          />
-        </div>
-        <div
-          id={comp_id}
-          className="message-box"
-          onClick={() => displayMessage()}
-        >
-          {`Think ${state.timer_message}`}
-        </div>
+    <Container elevation={3}>
+      <div className="grid">
+        <div className="text-white">Message</div>
+        <input
+          className="input"
+          type="text"
+          value={state.timer_message}
+          onChange={(e) => {
+            e.target.value.length > 0 &&
+              setState({ ...state, timer_message: e.target.value });
+          }}
+        />
+      </div>
+      <div className="grid">
+        <div className="text-white">Timer:</div>
+        <input
+          className="input"
+          type="number"
+          value={state.timer_for_msg}
+          onChange={(e) => {
+            parseInt(e.target.value) > 0 &&
+              setState({ ...state, timer_for_msg: parseInt(e.target.value) });
+          }}
+        />
+      </div>
+      <div
+        id={comp_id}
+        className="message-box"
+        onClick={() => displayMessage()}
+      >
+        {`Think ${state.timer_message}`}
       </div>
     </Container>
   );
