@@ -16,61 +16,42 @@ interface State {
 }
 
 const Container = styled(Paper)`
-  .rounded {
-    border-radius: 8px;
-  }
-  .text-center {
-    text-align: center;
-  }
-  .bg-purple-500 {
-    background-color: #9c27b0;
-  }
-  .bg-purple-700 {
-    background-color: #7b1fa2;
-  }
-  .text-white {
-    color: white;
-  }
-  .p-2 {
-    padding: 0.5rem;
-  }
-  .my-3 {
-    margin: 1rem 0;
-  }
-  .grid {
-    display: grid;
-  }
-  .grid-cols-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .my-2 {
-    margin: 0.5rem 0;
-  }
-  .mx-2 {
-    margin: 0 0.5rem;
-  }
-  .p-1 {
-    padding: 0.25rem;
-  }
-  .py-0 {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .flex {
-    display: flex;
-  }
-  .flex-row {
-    flex-direction: row;
-  }
-  .flex-wrap {
-    flex-wrap: wrap;
-  }
-  .cursor-pointer {
-    cursor: pointer;
-  }
-  .text-sm {
-    font-size: 0.875rem;
-  }
+  border-radius: 8px;
+  text-align: center;
+  background-color: #9c27b0;
+  padding: 0.5rem;
+  margin: 1rem 0;
+`;
+
+const InputContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  margin: 0.5rem 0;
+`;
+
+const InputLabel = styled.div`
+  color: white;
+`;
+
+const Input = styled.input`
+  margin: 0 0.5rem;
+  padding: 0.25rem;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+`;
+
+const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7b1fa2;
+  color: white;
+  padding: 8px 16px;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  font-size: 0.875rem;
 `;
 
 const SayMessageWithTimer: React.FC<SayMessageWithTimerProps> = ({ character, comp_id }) => {
@@ -106,10 +87,9 @@ const SayMessageWithTimer: React.FC<SayMessageWithTimerProps> = ({ character, co
   return (
     <Container elevation={3}>
       <div className="rounded text-center bg-purple-500 p-2 my-3">
-        <div className="grid grid-cols-2 my-2">
-          <div className="text-white">Message</div>
-          <input
-            className="mx-2 p-1 py-0 text-center"
+        <InputContainer>
+          <InputLabel>Message</InputLabel>
+          <Input
             type="text"
             value={state.timer_message}
             onChange={(e) => {
@@ -117,11 +97,10 @@ const SayMessageWithTimer: React.FC<SayMessageWithTimerProps> = ({ character, co
                 setState({ ...state, timer_message: e.target.value });
             }}
           />
-        </div>
-        <div className="grid grid-cols-2 my-2">
-          <div className="text-white">Timer:</div>
-          <input
-            className="mx-2 p-1 py-0 text-center"
+        </InputContainer>
+        <InputContainer>
+          <InputLabel>Timer:</InputLabel>
+          <Input
             type="number"
             value={state.timer_for_msg}
             onChange={(e) => {
@@ -129,14 +108,10 @@ const SayMessageWithTimer: React.FC<SayMessageWithTimerProps> = ({ character, co
                 setState({ ...state, timer_for_msg: parseInt(e.target.value) });
             }}
           />
-        </div>
-        <div
-          id={comp_id}
-          className="flex flex-row flex-wrap text-center bg-purple-700 text-white px-2 py-1 my-2 text-sm cursor-pointer"
-          onClick={() => displayMessage()}
-        >
+        </InputContainer>
+        <Button id={comp_id} onClick={displayMessage}>
           {`Say ${state.timer_message}`}
-        </div>
+        </Button>
       </div>
     </Container>
   );
