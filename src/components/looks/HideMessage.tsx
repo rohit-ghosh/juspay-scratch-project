@@ -10,7 +10,7 @@ interface HideMessageProps {
 
 const StyledDiv = styled.div`
   border-radius: 0.25rem;
-  background-color: #6b46c1;
+  background-color: #1e3a8a;
   text-align: center;
   color: white;
   max-width: fit-content;

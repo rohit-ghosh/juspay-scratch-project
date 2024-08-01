@@ -64,7 +64,7 @@ const StyledPaper = styled(Paper)`
 
 const StyledContainer = styled.div`
   text-align: center;
-  background-color: #6b46c1;
+  background-color: #1e3a8a;
   padding: 16px;
   border-radius: 8px;
 `;
@@ -91,7 +91,7 @@ const StyledButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #5a67d8;
+  background-color: #1d4ed8;
   color: white;
   padding: 8px 16px;
   margin: 16px 0;

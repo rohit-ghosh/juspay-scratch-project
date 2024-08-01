@@ -12,7 +12,7 @@ interface ShowProps {
 const StyledDiv = styled.div`
   border-radius: 0.25rem;
   text-align: center;
-  background-color: #6b46c1;
+  background-color: #1e3a8a;
   color: white;
   padding: 0.5rem 1rem;
   margin: 0.5rem auto;

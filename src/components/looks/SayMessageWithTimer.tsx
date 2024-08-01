@@ -18,7 +18,7 @@ interface State {
 const Container = styled(Paper)`
   border-radius: 8px;
   text-align: center;
-  background-color: #9c27b0;
+  background-color: #1e3a8a;
   padding: 0.5rem;
   margin: 1rem 0;
 `;
@@ -46,7 +46,7 @@ const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #7b1fa2;
+  background-color: #1d4ed8;
   color: white;
   padding: 8px 16px;
   margin: 0.5rem 0;
@@ -86,7 +86,7 @@ const SayMessageWithTimer: React.FC<SayMessageWithTimerProps> = ({ character, co
 
   return (
     <Container elevation={3}>
-      <div className="rounded text-center bg-purple-500 p-2 my-3">
+      <div className="rounded text-center p-2 my-3">
         <InputContainer>
           <InputLabel>Message</InputLabel>
           <Input

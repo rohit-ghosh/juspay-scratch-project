@@ -78,7 +78,7 @@ const StyledPaper = styled(Paper)`
 
 const StyledContainer = styled.div`
   text-align: center;
-  background-color: #6b46c1;
+  background-color: #1e3a8a;
   padding: 16px;
   border-radius: 8px;
 `;
@@ -106,7 +106,7 @@ const StyledMessageBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #4a148c;
+  background-color: #1d4ed8;
   color: white;
   padding: 8px;
   margin: 16px 0;

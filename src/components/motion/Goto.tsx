@@ -32,7 +32,7 @@ const StyledDiv = styled.div`
 
   .button {
     text-align: center;
-    background-color: #1e40af;
+    background-color: #1d4ed8;
     color: #ffffff;
     padding: 0.5rem;
     margin: 0.5rem 0;

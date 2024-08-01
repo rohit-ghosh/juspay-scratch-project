@@ -21,7 +21,7 @@ const Container = styled(Paper)`
   margin: 16px 0;
   border-radius: 8px;
   text-align: center;
-  background-color: #6b46c1;
+  background-color: #1e3a8a;
 
   .grid {
     display: grid;
@@ -45,7 +45,7 @@ const Container = styled(Paper)`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #4a148c;
+    background-color: #1d4ed8;
     color: white;
     padding: 8px;
     margin: 16px 0;

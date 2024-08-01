@@ -10,7 +10,7 @@ interface SizeProps {
 const Container = styled.div`
   text-align: center;
   border-radius: 8px;
-  background-color: #6b46c1;
+  background-color: #1e3a8a;
   padding: 16px;
   margin: 16px 0;
 `;
@@ -29,7 +29,7 @@ const Input = styled.input`
 
 const Button = styled.div`
   text-align: center;
-  background-color: #553c9a;
+  background-color: #1d4ed8;
   color: white;
   padding: 8px 16px;
   margin: 8px 0;
