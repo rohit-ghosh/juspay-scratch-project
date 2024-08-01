@@ -13,6 +13,7 @@ const SidebarContainer = styled(Box)`
   width: 15rem;
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -29,7 +30,7 @@ const SidebarHeader = styled(Box)`
   color: white;
   background-color: #38a169;
   padding: 0.5rem;
-  width: auto;
+  width: 100%; /* Ensure it takes full width */
 `;
 
 const SectionTitle = styled(Typography)`
@@ -39,15 +40,20 @@ const SectionTitle = styled(Typography)`
 const ComponentList = styled.ul`
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
+  width: 100%; /* Ensure it takes full width */
 `;
 
 const ComponentItem = styled.li`
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  width: 100%; /* Ensure it takes full width */
+  white-space: nowrap; /* Prevent text from overflowing */
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Sidebar: React.FC = () => {
-  const app = useAppSelector((state:RootState) => state.app);
+  const app = useAppSelector((state: RootState) => state.app);
   return (
     <SidebarContainer>
       <SidebarHeader>Side Bar</SidebarHeader>
