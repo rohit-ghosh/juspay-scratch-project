@@ -1,36 +1,9 @@
-import React, { useState } from 'react';
-import { RootState, useAppDispatch, useAppSelector } from '../redux/store'; // Adjust the import according to your store setup
+import React from 'react';
+import { RootState, useAppSelector } from '../redux/store'; // Adjust the import according to your store setup
 import CatSprite from './CatSprite';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { setActive } from '../redux/slice/characterSlice';
-
-// Styling for MaterialUI Components
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-    button: {
-      margin: 0,
-    },
-  })
-);
 
 const PreviewArea: React.FC = () => {
-  const classes = useStyles();
-  const dispatch = useAppDispatch();
   const character = useAppSelector((state: RootState) => state.character);
-  const [active, setActiveState] = useState(character.active);
   let elmnt: HTMLElement | null = null;
   let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
@@ -60,15 +33,9 @@ const PreviewArea: React.FC = () => {
     document.onmousemove = null;
   };
 
-  const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-    const value = e.target.value as string;
-    setActiveState(value);
-    dispatch(setActive(value));
-  };
-
   return (
     <div className="w-full flex-none h-full overflow-y-auto p-3" id="preview_area">
-      <div className="font-bold mb-5 text-center border border-2 rounded text-white bg-green-400 p-2 w-auto">
+      <div className="font-bold mb-5 text-center border-2 rounded text-white bg-green-400 p-2 w-auto">
         Preview Area
       </div>
       <div className="flex justify-around h-full">

@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import Paper from "@mui/material/Paper";
 import { RootState, useAppSelector } from "../../redux/store";
 import styled from "@emotion/styled";
 
 interface SayMessageProps {
   comp_id: string;
-}
-
-interface Character {
-  active: string;
 }
 
 const SayMessage: React.FC<SayMessageProps> = ({ comp_id }) => {
