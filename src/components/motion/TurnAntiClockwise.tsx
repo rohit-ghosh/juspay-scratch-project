@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import UndoIcon from "@material-ui/icons/Undo";
 import Paper from "@material-ui/core/Paper";
 import { RootState, useAppDispatch, useAppSelector } from "../../redux/store"; // Assuming you have a RootState type defined
