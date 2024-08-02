@@ -16,10 +16,10 @@ const StyledButton = styled(Button)`
 
 const RunButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText("#9c27b0"),
-  backgroundColor: "#9c27b0",
+  backgroundColor: "#1d4ed8",
   fontSize: '13px',
   '&:hover': {
-    backgroundColor: '#7b1fa2',
+    backgroundColor: '#1d4sa8',
   }
 }));
 
