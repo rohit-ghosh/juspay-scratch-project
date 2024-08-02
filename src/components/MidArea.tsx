@@ -1,5 +1,3 @@
-// src/components/MidArea.tsx
-
 import React from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import { getComponent } from "./getComponents";
@@ -7,7 +5,7 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Paper from "@mui/material/Paper";
-import { useAppDispatch } from "../redux/store"; // Adjust the import according to your store setup
+import { useAppDispatch } from "../redux/store";
 import { styled } from "@mui/material";
 import { addList } from "../redux/slice/listSlice";
 
@@ -16,14 +14,14 @@ const StyledButton = styled(Button)`
   margin: 0;
 `;
 
-const RunButton = styled(Button)`
-  color: ${({ theme }) => theme.palette.getContrastText("#9c27b0")};
-  background-color: #9c27b0;
-  font-size: 13px;
-  &:hover {
-    background-color: #7b1fa2;
+const RunButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText("#9c27b0"),
+  backgroundColor: "#9c27b0",
+  fontSize: '13px',
+  '&:hover': {
+    backgroundColor: '#7b1fa2',
   }
-`;
+}));
 
 // Define types for props
 interface MidAreaProps {
