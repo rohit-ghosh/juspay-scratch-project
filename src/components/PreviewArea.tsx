@@ -51,7 +51,7 @@ const PreviewArea: React.FC = () => {
 
   return (
     <div
-      className="w-full flex-none h-full overflow-y-auto p-3"
+      className="w-full flex-none h-full overflow-y-auto p-2"
       id="preview_area"
     >
       <div className="font-bold mb-5 text-center border-2 rounded text-white bg-blue-600 p-2 w-auto">

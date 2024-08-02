@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 import { Box, Typography } from "@mui/material";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 import { getComponent } from "./getComponents";
+import { looksComponents, motionComponents } from "./SidebarConstants";
 import { RootState, useAppSelector } from "../redux/store";
-import { motionComponents, looksComponents } from "./SidebarConstants";
 
 const SidebarContainer = styled(Box)`
   width: 15rem;
@@ -50,63 +50,50 @@ const ComponentItem = styled.li`
 
 const Sidebar: React.FC = () => {
   const app = useAppSelector((state: RootState) => state.app);
+
+  /**
+   * Renders a list of components with drag and drop functionality.
+   *
+   * @param components - An array of component names to render.
+   * @param droppableId - The id of the droppable area for the components.
+   * @returns The JSX element representing the list of components with drag and drop support.
+   */
+  const renderComponents = (components: string[], droppableId: string) => (
+    <Droppable droppableId={droppableId} type="COMPONENTS">
+      {(provided) => (
+        <ComponentList {...provided.droppableProps} ref={provided.innerRef}>
+          {components.map((x, i) => (
+            <Draggable
+              key={`${x}-${droppableId}`}
+              draggableId={`${x}-${droppableId}`}
+              index={i}
+            >
+              {(provided) => (
+                <ComponentItem
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  {...provided.dragHandleProps}
+                >
+                  {getComponent(x, String(app.appId))}
+                </ComponentItem>
+              )}
+            </Draggable>
+          ))}
+          {provided.placeholder}
+        </ComponentList>
+      )}
+    </Droppable>
+  );
+
   return (
     <SidebarContainer>
       <SidebarHeader className="bg-blue-600">Side Bar</SidebarHeader>
 
-      {/* Motion */}
       <SectionTitle>Motion</SectionTitle>
-      <Droppable droppableId="sideArea-motion" type="COMPONENTS">
-        {(provided) => (
-          <ComponentList {...provided.droppableProps} ref={provided.innerRef}>
-            {motionComponents.map((x, i) => (
-              <Draggable
-                key={`${x}-sideArea`}
-                draggableId={`${x}-sideArea`}
-                index={i}
-              >
-                {(provided) => (
-                  <ComponentItem
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                  >
-                    {getComponent(x, String(app.appId))}
-                  </ComponentItem>
-                )}
-              </Draggable>
-            ))}
-            {provided.placeholder}
-          </ComponentList>
-        )}
-      </Droppable>
+      {renderComponents(motionComponents, "sideArea-motion")}
 
-      {/* Looks */}
       <SectionTitle>Looks</SectionTitle>
-      <Droppable droppableId="sideArea-looks" type="COMPONENTS">
-        {(provided) => (
-          <ComponentList {...provided.droppableProps} ref={provided.innerRef}>
-            {looksComponents.map((x, i) => (
-              <Draggable
-                key={`${x}-sideArea`}
-                draggableId={`${x}-sideArea`}
-                index={i}
-              >
-                {(provided) => (
-                  <ComponentItem
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                  >
-                    {getComponent(x, String(app.appId))}
-                  </ComponentItem>
-                )}
-              </Draggable>
-            ))}
-            {provided.placeholder}
-          </ComponentList>
-        )}
-      </Droppable>
+      {renderComponents(looksComponents, "sideArea-looks")}
     </SidebarContainer>
   );
 };
