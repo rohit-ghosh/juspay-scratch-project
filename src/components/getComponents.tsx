@@ -1,30 +1,23 @@
-// src/components/getComponents.tsx
-
-import React from "react";
-import Move from "./motion/Move";
-import TurnAntiClockwise from "./motion/TurnAntiClockwise";
-import TurnClockwise from "./motion/TurnClockwise";
 import GotoXY from "./motion/Goto";
-import SayMessage from "./looks/SayMessage";
-import SayMessageWithTimer from "./looks/SayMessageWithTimer";
-import Size from "./looks/Size";
-import Show from "./looks/Show";
 import Hide from "./looks/Hide";
 import HideMessage from "./looks/HideMessage";
+import Move from "./motion/Move";
 import MoveY from "./motion/MoveY";
+import SayMessage from "./looks/SayMessage";
+import SayMessageWithTimer from "./looks/SayMessageWithTimer";
+import Show from "./looks/Show";
+import Size from "./looks/Size";
+import store from "../redux/store";
 import Think from "./looks/Think";
 import ThinkWithTimer from "./looks/ThinkWithTimer";
-import store, { RootState, useAppSelector } from "../redux/store";
-
-interface ComponentProps {
-  comp_id: string;
-}
+import TurnAntiClockwise from "./motion/TurnAntiClockwise";
+import TurnClockwise from "./motion/TurnClockwise";
 
 export const getComponent = (key: string, id: string): JSX.Element | null => {
-    const character = store.getState().character;
+  const character = store.getState().character;
   switch (key) {
     case "MOVE_Y":
-      return <MoveY comp_id={id} character={character}/>;
+      return <MoveY comp_id={id} character={character} />;
     case "MOVE":
       return <Move comp_id={id} character={character} />;
     case "TURN_CLOCKWISE":

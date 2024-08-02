@@ -1,5 +1,4 @@
 import App from "./App";
-import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import store from "./redux/store";
@@ -16,11 +15,11 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <Provider store={store}>
-      <SnackbarProvider maxSnack={4}>
-        <App />
-      </SnackbarProvider>
-    </Provider>
+  <Provider store={store}>
+    <SnackbarProvider maxSnack={4}>
+      <App />
+    </SnackbarProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

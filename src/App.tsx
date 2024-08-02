@@ -1,21 +1,25 @@
-// src/App.tsx
-import React from "react";
-import Sidebar from "./components/Sidebar";
 import MidArea from "./components/MidArea";
 import PreviewArea from "./components/PreviewArea";
-import { DragDropContext, DropResult } from "react-beautiful-dnd";
-import { RootState, useAppDispatch, useAppSelector } from "./redux/store";
-import { CompList, updateList } from "./redux/slice/listSlice";
+import React from "react";
+import Sidebar from "./components/Sidebar";
 import { cloneDeep } from "lodash";
+import { CompList, updateList } from "./redux/slice/listSlice";
+import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import { Header } from "./components/header/Header";
+import { RootState, useAppDispatch, useAppSelector } from "./redux/store";
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
   const complist = useAppSelector((state: RootState) => state.list);
   const events = useAppSelector((state: RootState) => state.events);
 
+  /**
+   * Handles the drag end event for the drag and drop functionality.
+   * Updates the list based on the drag result by moving components between lists.
+   *
+   * @param result - The result of the drag operation containing information about the source and destination.
+   */
   const onDragEnd = (result: DropResult) => {
-    console.log("source ", result.source, " destination: ", result.destination);
-
     let element = result.draggableId.split("-")[0];
 
     // all lists in mid area
@@ -43,7 +47,6 @@ const App: React.FC = () => {
       }
     }
 
-    console.log(old_list);
     if (
       !result.destination ||
       result.destination.droppableId === "sideArea-motion"
@@ -74,6 +77,7 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-blue-100 font-sans">
+      <Header />
       <div className="h-screen overflow-hidden flex flex-row pt-6">
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="flex-1 h-screen overflow-hidden flex flex-row bg-white border-t border-r border-gray-200 rounded-tr-xl mr-2">

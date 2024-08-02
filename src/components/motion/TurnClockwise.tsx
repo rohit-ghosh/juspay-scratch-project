@@ -1,8 +1,8 @@
+import Paper from "@material-ui/core/Paper";
 import React, { useState } from "react";
 import RedoIcon from "@material-ui/icons/Redo";
-import Paper from "@material-ui/core/Paper";
-import { RootState, useAppDispatch, useAppSelector } from "../../redux/store";
 import styled from "@emotion/styled";
+import { RootState, useAppDispatch, useAppSelector } from "../../redux/store";
 import { setCharacterAngle } from "../../redux/slice/characterSlice";
 
 interface TurnClockWiseProps {
@@ -89,7 +89,6 @@ const TurnClockWise: React.FC<TurnClockWiseProps> = ({ comp_id }) => {
       (x) => x.id === character.active
     );
     if (character_angle && el) {
-      console.log("rotating figure...");
       el.style.transform = `rotate(${character_angle.angle + angle}deg)`;
       dispatch(setCharacterAngle(character_angle.angle + angle));
     }
@@ -105,7 +104,7 @@ const TurnClockWise: React.FC<TurnClockWiseProps> = ({ comp_id }) => {
             type="number"
             value={angle}
             onChange={(e) => {
-                setAngle(parseInt(e.target.value));
+              setAngle(parseInt(e.target.value));
             }}
           />
         </div>
