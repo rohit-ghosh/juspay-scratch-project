@@ -17,10 +17,10 @@ const StyledButton = styled(Button)`
 const RunButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText("#9c27b0"),
   backgroundColor: "#1d4ed8",
-  fontSize: '13px',
-  '&:hover': {
-    backgroundColor: '#1d4sa8',
-  }
+  fontSize: "13px",
+  "&:hover": {
+    backgroundColor: "#1d4sa8",
+  },
 }));
 
 // Define types for props
@@ -98,8 +98,8 @@ const MidArea: React.FC<MidAreaProps> = ({ area_list, event_values }) => {
 
   return (
     <div className="flex-1 h-full overflow-auto p-3">
-      <div className="flex justify-between">
-        <div className="font-bold mb-5 text-center border-2 rounded text-white bg-green-400 p-2 w-auto">
+      <div className="flex items-center justify-between w-full p-3">
+        <div className="font-bold mb-5 border-2 rounded text-white bg-green-400 p-2 flex-grow">
           Mid Area
         </div>
 
@@ -114,6 +114,7 @@ const MidArea: React.FC<MidAreaProps> = ({ area_list, event_values }) => {
           </StyledButton>
         </div>
       </div>
+
       <div className="grid grid-flow-col">
         {area_list.midAreaLists.map((l) => (
           <div className="w-60" key={l.id}>
