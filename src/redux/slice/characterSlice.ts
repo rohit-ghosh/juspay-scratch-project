@@ -17,7 +17,7 @@ export const characterSlice = createSlice({
     setCharacterAngle: (state, action) => {
       state.characters[0].angle = action.payload;
     },
-    setActive: (state, action) => {
+    setActive: (state) => {
       let charactersArray = state.characters;
       charactersArray.push({
         id: `sprite${state.characters.length}`,
@@ -29,7 +29,6 @@ export const characterSlice = createSlice({
   },
 });
 
-export const { setCharacterAngle, setActive } =
-  characterSlice.actions;
+export const { setCharacterAngle, setActive } = characterSlice.actions;
 
 export default characterSlice.reducer;

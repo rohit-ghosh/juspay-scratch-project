@@ -8,7 +8,7 @@ const reducers = {
   app: appSlice,
   character: characterSlice,
   events: eventSlice,
-  list: listSlice
+  list: listSlice,
 };
 
 const rootReducer = combineReducers(reducers);

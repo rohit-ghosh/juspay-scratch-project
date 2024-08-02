@@ -10,7 +10,7 @@ export interface AppState {
 const initialState: AppState = {
   appInitiated: false,
   firstLoadCompleted: false,
-  appId: random(100, 100000000)
+  appId: random(100, 100000000),
 };
 
 export const appSlice = createSlice({
