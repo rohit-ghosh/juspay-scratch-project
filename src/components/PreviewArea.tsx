@@ -1,7 +1,6 @@
 import CatSprite from "./CatSprite";
 import React from "react";
 import { RootState, useAppSelector } from "../redux/store";
-// Adjust the import according to your store setup
 
 const PreviewArea: React.FC = () => {
   const character = useAppSelector((state: RootState) => state.character);
@@ -11,6 +10,12 @@ const PreviewArea: React.FC = () => {
     pos3 = 0,
     pos4 = 0;
 
+  /**
+   * Function to handle mouse down event for dragging an element.
+   *
+   * @param e - The mouse event triggering the function.
+   * @param id - The id of the element to be dragged.
+   */
   const dragMouseDown = (e: React.MouseEvent, id: string) => {
     elmnt = document.getElementById(id);
     e.preventDefault();
@@ -20,6 +25,10 @@ const PreviewArea: React.FC = () => {
     document.onmousemove = elementDrag as any;
   };
 
+  /**
+   * Function to handle the dragging of an element based on mouse events.
+   * @param e The mouse event triggering the drag action.
+   */
   const elementDrag = (e: MouseEvent) => {
     e.preventDefault();
     pos1 = pos3 - e.clientX;
@@ -32,6 +41,9 @@ const PreviewArea: React.FC = () => {
     }
   };
 
+  /**
+   * Function to clear event listeners for mouseup and mousemove events.
+   */
   const closeDragElement = () => {
     document.onmouseup = null;
     document.onmousemove = null;
