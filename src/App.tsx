@@ -5,7 +5,7 @@ import Sidebar from "./components/Sidebar";
 import { cloneDeep } from "lodash";
 import { CompList, updateList } from "./redux/slice/listSlice";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
-import { Header } from "./components/header/Header";
+import { Header } from "./Header";
 import { RootState, useAppDispatch, useAppSelector } from "./redux/store";
 
 const App: React.FC = () => {
