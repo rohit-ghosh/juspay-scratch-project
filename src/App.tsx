@@ -76,18 +76,20 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-blue-100 font-sans">
-      <Header />
-      <div className="h-screen overflow-hidden flex flex-row pt-6">
-        <DragDropContext onDragEnd={onDragEnd}>
-          <div className="flex-1 h-screen overflow-hidden flex flex-row bg-white border-t border-r border-gray-200 rounded-tr-xl mr-2">
-            <Sidebar />
-            <MidArea area_list={complist} event_values={events} />
-          </div>
-          <div className="w-1/3 relative h-screen overflow-scroll flex flex-row bg-white border-t border-l border-gray-200 rounded-tl-xl ml-2">
-            <PreviewArea />
-          </div>
-        </DragDropContext>
+    <div className="font-sans bg-blue-300">
+      <div className="p-3">
+        <Header />
+        <div className="overflow-hidden flex flex-row pt-6">
+          <DragDropContext onDragEnd={onDragEnd}>
+            <div className="flex-1 h-screen overflow-hidden flex flex-row bg-white border-t border-r border-gray-200 rounded-tr-xl mr-2">
+              <Sidebar />
+              <MidArea area_list={complist} event_values={events} />
+            </div>
+            <div className="w-1/3 relative h-screen overflow-scroll flex flex-row bg-white border-t border-l border-gray-200 rounded-tl-xl ml-2">
+              <PreviewArea />
+            </div>
+          </DragDropContext>
+        </div>
       </div>
     </div>
   );

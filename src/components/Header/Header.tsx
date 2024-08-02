@@ -4,7 +4,7 @@ import { Title } from "./Style";
 
 export function Header() {
   return (
-    <AppBar position="sticky">
+    <AppBar position="static">
       <Toolbar>
         <Title variant="h6">Juspay Scratch Project</Title>
         <Button

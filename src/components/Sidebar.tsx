@@ -1,13 +1,10 @@
 import React from "react";
+import styled from "@emotion/styled";
+import { Box, Typography } from "@mui/material";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 import { getComponent } from "./getComponents";
-import {
-  motionComponents,
-  looksComponents,
-} from "./SidebarConstants";
-import { Box, Typography } from "@mui/material";
 import { RootState, useAppSelector } from "../redux/store";
-import styled from "@emotion/styled";
+import { motionComponents, looksComponents } from "./SidebarConstants";
 
 const SidebarContainer = styled(Box)`
   width: 15rem;
@@ -28,7 +25,6 @@ const SidebarHeader = styled(Box)`
   border: 2px solid;
   border-radius: 0.25rem;
   color: white;
-  background-color: #38a169;
   padding: 0.5rem;
   width: 100%; /* Ensure it takes full width */
 `;
@@ -56,16 +52,13 @@ const Sidebar: React.FC = () => {
   const app = useAppSelector((state: RootState) => state.app);
   return (
     <SidebarContainer>
-      <SidebarHeader>Side Bar</SidebarHeader>
+      <SidebarHeader className="bg-blue-600">Side Bar</SidebarHeader>
 
       {/* Motion */}
       <SectionTitle>Motion</SectionTitle>
       <Droppable droppableId="sideArea-motion" type="COMPONENTS">
         {(provided) => (
-          <ComponentList
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
+          <ComponentList {...provided.droppableProps} ref={provided.innerRef}>
             {motionComponents.map((x, i) => (
               <Draggable
                 key={`${x}-sideArea`}
@@ -92,10 +85,7 @@ const Sidebar: React.FC = () => {
       <SectionTitle>Looks</SectionTitle>
       <Droppable droppableId="sideArea-looks" type="COMPONENTS">
         {(provided) => (
-          <ComponentList
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
+          <ComponentList {...provided.droppableProps} ref={provided.innerRef}>
             {looksComponents.map((x, i) => (
               <Draggable
                 key={`${x}-sideArea`}
