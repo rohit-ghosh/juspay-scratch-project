@@ -93,7 +93,7 @@ const MidArea: React.FC<MidAreaProps> = ({ area_list, event_values }) => {
         eventFire(document.getElementById(str2), "click");
         i++;
       }
-    }, 2000);
+    }, 500);
   };
 
   return (
