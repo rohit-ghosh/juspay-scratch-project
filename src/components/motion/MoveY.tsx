@@ -9,7 +9,7 @@ interface MoveYProps {
 
 const StyledDiv = styled.div`
   text-align: center;
-  border-radius: 0.375rem;
+  border-radius: 0.25rem;
   background-color: #1e3a8a;
   color: white;
   padding: 0.5rem;
@@ -47,7 +47,10 @@ const MoveY: React.FC<MoveYProps> = ({ comp_id }) => {
         <StyledInput
           type="number"
           value={steps}
-          onChange={(e) => setSteps(parseInt(e.target.value))}
+          onChange={(e) => {
+            if (e.target.value) setSteps(parseInt(e.target.value));
+            else setSteps(0);
+          }}
         />
         steps
       </StyledDiv>

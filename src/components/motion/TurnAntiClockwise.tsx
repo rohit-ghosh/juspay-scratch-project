@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import UndoIcon from "@material-ui/icons/Undo";
 import Paper from "@material-ui/core/Paper";
-import { RootState, useAppDispatch, useAppSelector } from "../../redux/store"; // Assuming you have a RootState type defined
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+import UndoIcon from "@material-ui/icons/Undo";
+import { RootState, useAppDispatch, useAppSelector } from "../../redux/store";
 import { setCharacterAngle } from "../../redux/slice/characterSlice";
 
 interface TurnAntiClockWiseProps {
@@ -105,7 +105,8 @@ const TurnAntiClockWise: React.FC<TurnAntiClockWiseProps> = ({ comp_id }) => {
             type="number"
             value={angle}
             onChange={(e) => {
-              setAngle(parseInt(e.target.value));
+              if (e.target.value) setAngle(parseInt(e.target.value));
+              else setAngle(0);
             }}
           />
         </div>

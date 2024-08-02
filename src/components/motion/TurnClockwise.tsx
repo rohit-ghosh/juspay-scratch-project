@@ -104,7 +104,8 @@ const TurnClockWise: React.FC<TurnClockWiseProps> = ({ comp_id }) => {
             type="number"
             value={angle}
             onChange={(e) => {
-              setAngle(parseInt(e.target.value));
+              if (e.target.value) setAngle(parseInt(e.target.value));
+              else setAngle(0);
             }}
           />
         </div>

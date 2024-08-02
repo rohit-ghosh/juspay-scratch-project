@@ -9,7 +9,7 @@ interface GotoXYProps {
 
 const StyledDiv = styled.div`
   text-align: center;
-  border-radius: 0.375rem;
+  border-radius: 0.25rem;
   background-color: #1e3a8a;
   padding: 0.5rem;
   margin: 0.75rem 0;

@@ -29,7 +29,10 @@ const Move: React.FC<MoveProps> = ({ comp_id }) => {
           type="number"
           className="text-black text-center w-16 mx-2"
           value={steps}
-          onChange={(e) => setSteps(parseInt(e.target.value))}
+          onChange={(e) => {
+            if (e.target.value) setSteps(parseInt(e.target.value));
+            else setSteps(0);
+          }}
         />{" "}
         steps
       </StyledDiv>
