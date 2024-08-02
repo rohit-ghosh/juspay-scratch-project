@@ -15,7 +15,7 @@ export const characterSlice = createSlice({
   initialState,
   reducers: {
     setCharacterAngle: (state, action) => {
-      state.active = action.payload.id;
+      state.characters[0].angle = action.payload;
     },
     setActive: (state, action) => {
       let charactersArray = state.characters;

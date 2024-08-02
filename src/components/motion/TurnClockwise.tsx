@@ -89,6 +89,7 @@ const TurnClockWise: React.FC<TurnClockWiseProps> = ({ comp_id }) => {
       (x) => x.id === character.active
     );
     if (character_angle && el) {
+      console.log("rotating figure...");
       el.style.transform = `rotate(${character_angle.angle + angle}deg)`;
       dispatch(setCharacterAngle(character_angle.angle + angle));
     }
@@ -103,7 +104,9 @@ const TurnClockWise: React.FC<TurnClockWiseProps> = ({ comp_id }) => {
             className="mx-2 p-1 py-0 text-center"
             type="number"
             value={angle}
-            onChange={(e) => setAngle(parseInt(e.target.value))}
+            onChange={(e) => {
+                setAngle(parseInt(e.target.value));
+            }}
           />
         </div>
         <div
