@@ -1,12 +1,9 @@
-import React, { useState } from "react";
 import Paper from "@mui/material/Paper";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { RootState, useAppSelector } from "../../redux/store";
 
 interface ThinkMessageProps {
-  character: {
-    active: string;
-  };
   comp_id: string;
 }
 
@@ -16,7 +13,8 @@ interface State {
   character_id: string;
 }
 
-const ThinkMessage: React.FC<ThinkMessageProps> = ({ character, comp_id }) => {
+const ThinkMessage: React.FC<ThinkMessageProps> = ({ comp_id }) => {
+  const character = useAppSelector((state: RootState) => state.character);
   const app = useAppSelector((state: RootState) => state.app);
   const [state, setState] = useState<State>({
     show_msg: false,
@@ -60,10 +58,7 @@ const ThinkMessage: React.FC<ThinkMessageProps> = ({ character, comp_id }) => {
             }}
           />
         </StyledGrid>
-        <StyledMessageBox
-          id={comp_id}
-          onClick={() => displayMessage()}
-        >
+        <StyledMessageBox id={comp_id} onClick={() => displayMessage()}>
           {`Think ${state.message}`}
         </StyledMessageBox>
       </StyledContainer>

@@ -1,14 +1,10 @@
-// src/components/looks/Hide.tsx
-
-import React from "react";
 import Paper from "@mui/material/Paper";
+import React from "react";
 import styled from "@emotion/styled";
+import { RootState, useAppSelector } from "../../redux/store";
 
 // Define the types for the component props
 interface HideProps {
-  character: {
-    active: string;
-  };
   comp_id: string;
 }
 
@@ -24,7 +20,8 @@ const HideButton = styled.div`
   cursor: pointer;
 `;
 
-const Hide: React.FC<HideProps> = ({ character, comp_id }) => {
+const Hide: React.FC<HideProps> = ({ comp_id }) => {
+  const character = useAppSelector((state: RootState) => state.character);
   // To handle hide component
   const handleDisplay = () => {
     const el = document.getElementById(character.active);

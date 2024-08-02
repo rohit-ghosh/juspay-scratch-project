@@ -1,11 +1,9 @@
-import React, { useState } from "react";
 import Paper from "@mui/material/Paper";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { RootState, useAppSelector } from "../../redux/store";
 
 interface ThinkWithTimerProps {
-  character: {
-    active: string;
-  };
   comp_id: string;
 }
 
@@ -55,7 +53,8 @@ const Container = styled(Paper)`
   }
 `;
 
-const ThinkWithTimer: React.FC<ThinkWithTimerProps> = ({ character, comp_id }) => {
+const ThinkWithTimer: React.FC<ThinkWithTimerProps> = ({ comp_id }) => {
+  const character = useAppSelector((state: RootState) => state.character);
   const [state, setState] = useState<State>({
     show_msg: false,
     timer_message: "",

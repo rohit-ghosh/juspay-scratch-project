@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import Paper from "@mui/material/Paper";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { RootState, useAppSelector } from "../../redux/store";
 
 interface GotoXYProps {
-  character: { active: string };
   comp_id: string;
 }
 
@@ -41,7 +41,8 @@ const StyledDiv = styled.div`
   }
 `;
 
-const GotoXY: React.FC<GotoXYProps> = ({ character, comp_id }) => {
+const GotoXY: React.FC<GotoXYProps> = ({ comp_id }) => {
+  const character = useAppSelector((state: RootState) => state.character);
   const [state, setState] = useState({ goto_x: 0, goto_y: 0 });
 
   const gotoXY = () => {

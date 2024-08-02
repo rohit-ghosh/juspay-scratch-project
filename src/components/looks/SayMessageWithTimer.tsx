@@ -1,11 +1,9 @@
-import React, { useState } from "react";
 import Paper from "@material-ui/core/Paper";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { RootState, useAppSelector } from "../../redux/store";
 
 interface SayMessageWithTimerProps {
-  character: {
-    active: string;
-  };
   comp_id: string;
 }
 
@@ -54,7 +52,10 @@ const Button = styled.div`
   font-size: 0.875rem;
 `;
 
-const SayMessageWithTimer: React.FC<SayMessageWithTimerProps> = ({ character, comp_id }) => {
+const SayMessageWithTimer: React.FC<SayMessageWithTimerProps> = ({
+  comp_id,
+}) => {
+  const character = useAppSelector((state: RootState) => state.character);
   const [state, setState] = useState<State>({
     show_msg: false,
     timer_message: "",

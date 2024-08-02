@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import Paper from "@mui/material/Paper";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { RootState, useAppSelector } from "../../redux/store";
 
 interface MoveYProps {
-  character: { active: string };
   comp_id: string;
 }
 
@@ -27,7 +27,8 @@ const StyledInput = styled.input`
   margin: 0 0.5rem;
 `;
 
-const MoveY: React.FC<MoveYProps> = ({ character, comp_id }) => {
+const MoveY: React.FC<MoveYProps> = ({ comp_id }) => {
+  const character = useAppSelector((state: RootState) => state.character);
   const [steps, setSteps] = useState<number>(0);
 
   const handleClick = () => {

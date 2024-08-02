@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import Paper from "@material-ui/core/Paper";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { RootState, useAppSelector } from "../../redux/store";
 
 interface SizeProps {
-  character: { active: string };
   comp_id: string;
 }
 
@@ -37,7 +37,8 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-const Size: React.FC<SizeProps> = ({ character, comp_id }) => {
+const Size: React.FC<SizeProps> = ({ comp_id }) => {
+  const character = useAppSelector((state: RootState) => state.character);
   const [scale, setScale] = useState<number>(1);
 
   const changeSize = () => {

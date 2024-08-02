@@ -1,15 +1,14 @@
-import React, { useState } from "react";
 import Paper from "@material-ui/core/Paper";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { RootState, useAppSelector } from "../../redux/store";
 
 interface MoveProps {
-  character: {
-    active: string;
-  };
   comp_id: string;
 }
 
-const Move: React.FC<MoveProps> = ({ character, comp_id }) => {
+const Move: React.FC<MoveProps> = ({ comp_id }) => {
+  const character = useAppSelector((state: RootState) => state.character);
   const [steps, setSteps] = useState<number>(0);
 
   const handleClick = () => {
@@ -24,10 +23,7 @@ const Move: React.FC<MoveProps> = ({ character, comp_id }) => {
 
   return (
     <Paper elevation={3}>
-      <StyledDiv
-        id={comp_id}
-        onClick={handleClick}
-      >
+      <StyledDiv id={comp_id} onClick={handleClick}>
         Move X{" "}
         <input
           type="number"
