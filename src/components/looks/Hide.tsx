@@ -11,7 +11,7 @@ interface HideProps {
 // Styled component using styled-components
 const HideButton = styled.div`
   text-align: center;
-  border-radius: 0.375rem;
+  border-radius: 0.25rem;
   background-color: #1e3a8a;
   color: white;
   padding: 0.5rem 1rem;

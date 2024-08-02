@@ -12,7 +12,7 @@ const StyledDiv = styled.div`
   background-color: #1e3a8a;
   text-align: center;
   color: white;
-  max-width: fit-content;
+  width: 100%;
   padding: 0.25rem;
   margin: 0.75rem 0;
 `;

@@ -29,8 +29,20 @@ const SidebarHeader = styled(Box)`
   width: 100%; /* Ensure it takes full width */
 `;
 
+const SectionWrapper = styled(Box)`
+  background: dodgerblue;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 5px;
+  width: 100%;
+`;
+
 const SectionTitle = styled(Typography)`
   font-weight: bold;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  color: white;
 `;
 
 const ComponentList = styled.ul`
@@ -87,13 +99,17 @@ const Sidebar: React.FC = () => {
 
   return (
     <SidebarContainer>
-      <SidebarHeader className="bg-blue-600">Side Bar</SidebarHeader>
+      <SidebarHeader className="bg-blue-600">Tasks</SidebarHeader>
 
-      <SectionTitle>Motion</SectionTitle>
-      {renderComponents(motionComponents, "sideArea-motion")}
+      <SectionWrapper>
+        <SectionTitle>Motion</SectionTitle>
+        {renderComponents(motionComponents, "sideArea-motion")}
+      </SectionWrapper>
 
-      <SectionTitle>Looks</SectionTitle>
-      {renderComponents(looksComponents, "sideArea-looks")}
+      <SectionWrapper>
+        <SectionTitle>Looks</SectionTitle>
+        {renderComponents(looksComponents, "sideArea-looks")}
+      </SectionWrapper>
     </SidebarContainer>
   );
 };

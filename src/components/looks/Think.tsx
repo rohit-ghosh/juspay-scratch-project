@@ -67,7 +67,6 @@ const ThinkMessage: React.FC<ThinkMessageProps> = ({ comp_id }) => {
 };
 
 const StyledPaper = styled(Paper)`
-  padding: 16px;
   margin: 16px 0;
 `;
 
@@ -75,7 +74,7 @@ const StyledContainer = styled.div`
   text-align: center;
   background-color: #1e3a8a;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 0.25rem;
 `;
 
 const StyledGrid = styled.div`

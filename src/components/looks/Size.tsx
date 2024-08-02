@@ -13,16 +13,16 @@ const Container = styled.div`
   background-color: #1e3a8a;
   padding: 16px;
   margin: 16px 0;
+  border-radius: 0.25rem;
 `;
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   margin: 8px 0;
 `;
 
 const Input = styled.input`
-  margin: 0 8px;
   padding: 4px 0;
   text-align: center;
 `;
@@ -56,7 +56,10 @@ const Size: React.FC<SizeProps> = ({ comp_id }) => {
           <Input
             type="number"
             value={scale}
-            onChange={(e) => setScale(parseInt(e.target.value))}
+            onChange={(e) => {
+              if (e.target.value) setScale(parseInt(e.target.value));
+              else setScale(0);
+            }}
           />
         </Grid>
         <Button id={comp_id} onClick={changeSize}>

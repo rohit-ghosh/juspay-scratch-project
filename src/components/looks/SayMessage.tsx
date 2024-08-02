@@ -58,15 +58,14 @@ const SayMessage: React.FC<SayMessageProps> = ({ comp_id }) => {
 };
 
 const StyledPaper = styled(Paper)`
-  padding: 16px;
   margin: 16px 0;
 `;
 
 const StyledContainer = styled.div`
+  border-radius: 0.25rem;
   text-align: center;
   background-color: #1e3a8a;
   padding: 16px;
-  border-radius: 8px;
 `;
 
 const StyledGrid = styled.div`

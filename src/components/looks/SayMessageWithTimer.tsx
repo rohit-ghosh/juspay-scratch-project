@@ -23,7 +23,6 @@ const Container = styled(Paper)`
 
 const InputContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
   align-items: center;
   margin: 0.5rem 0;
 `;
@@ -33,7 +32,6 @@ const InputLabel = styled.div`
 `;
 
 const Input = styled.input`
-  margin: 0 0.5rem;
   padding: 0.25rem;
   text-align: center;
   width: 100%;
@@ -100,7 +98,7 @@ const SayMessageWithTimer: React.FC<SayMessageWithTimerProps> = ({
           />
         </InputContainer>
         <InputContainer>
-          <InputLabel>Timer:</InputLabel>
+          <InputLabel>Timer</InputLabel>
           <Input
             type="number"
             value={state.timer_for_msg}

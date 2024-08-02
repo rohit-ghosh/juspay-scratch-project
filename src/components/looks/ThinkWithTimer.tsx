@@ -23,7 +23,6 @@ const Container = styled(Paper)`
 
   .grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
     gap: 8px;
     margin: 8px 0;
   }
