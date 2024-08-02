@@ -13,34 +13,23 @@ import TurnAntiClockwise from "./motion/TurnAntiClockwise";
 import TurnClockwise from "./motion/TurnClockwise";
 
 export const getComponent = (key: string, id: string): JSX.Element | null => {
-  switch (key) {
-    case "MOVE_Y":
-      return <MoveY comp_id={id} />;
-    case "MOVE":
-      return <Move comp_id={id} />;
-    case "TURN_CLOCKWISE":
-      return <TurnClockwise comp_id={id} />;
-    case "TURN_ANTI_CLOCKWISE":
-      return <TurnAntiClockwise comp_id={id} />;
-    case "GOTO_XY":
-      return <GotoXY comp_id={id} />;
-    case "SAY_MESSAGE":
-      return <SayMessage comp_id={id} />;
-    case "SAY_MESSAGE_WITH_TIMER":
-      return <SayMessageWithTimer comp_id={id} />;
-    case "SIZE":
-      return <Size comp_id={id} />;
-    case "SHOW":
-      return <Show comp_id={id} />;
-    case "HIDE":
-      return <Hide comp_id={id} />;
-    case "HIDE_MESSAGE":
-      return <HideMessage comp_id={id} />;
-    case "THINK":
-      return <Think comp_id={id} />;
-    case "THINK_TIMER":
-      return <ThinkWithTimer comp_id={id} />;
-    default:
-      return null;
-  }
+  const componentMap = {
+    MOVE_Y: MoveY,
+    MOVE: Move,
+    TURN_CLOCKWISE: TurnClockwise,
+    TURN_ANTI_CLOCKWISE: TurnAntiClockwise,
+    GOTO_XY: GotoXY,
+    SAY_MESSAGE: SayMessage,
+    SAY_MESSAGE_WITH_TIMER: SayMessageWithTimer,
+    SIZE: Size,
+    SHOW: Show,
+    HIDE: Hide,
+    HIDE_MESSAGE: HideMessage,
+    THINK: Think,
+    THINK_TIMER: ThinkWithTimer,
+  };
+  type ComponentKey = keyof typeof componentMap;
+
+  const Component = componentMap[key as ComponentKey];
+  return Component ? <Component comp_id={id} /> : null;
 };
