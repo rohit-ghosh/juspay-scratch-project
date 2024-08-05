@@ -15,7 +15,6 @@ const StyledDiv = styled.div`
   padding: 0.5rem;
   margin: 0.5rem 0;
   font-size: 0.875rem;
-  cursor: pointer;
   margin-left: auto;
   margin-right: auto;
 `;
@@ -42,7 +41,7 @@ const MoveY: React.FC<MoveYProps> = ({ comp_id }) => {
 
   return (
     <Paper elevation={3}>
-      <StyledDiv id={comp_id} onClick={handleClick}>
+      <StyledDiv>
         Move Y
         <StyledInput
           type="number"
@@ -53,6 +52,13 @@ const MoveY: React.FC<MoveYProps> = ({ comp_id }) => {
           }}
         />
         steps
+        <div
+          id={comp_id}
+          className="flex bg-blue-700 text-white px-2 py-1 mt-3 mb-1 text-sm cursor-pointer"
+          onClick={handleClick}
+        >
+          <div className="flex mx-auto">Move</div>
+        </div>
       </StyledDiv>
     </Paper>
   );
